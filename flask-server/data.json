@@ -1,0 +1,42 @@
+[
+    {
+        "id" : 1,
+        "title" : "Lenovo V14",
+        "price" : 6149000,
+        "rating": 5.0,
+        "location" : "Jakarta Utara",
+        "sold" : 32
+    },
+    {
+        "id" : 2,
+        "title" : "Tempered Glass iPhone 11",
+        "price" : 55000,
+        "rating": 4.9,
+        "location" : "Jakarta Barat",
+        "sold" : 1600
+    },    
+    {
+        "id" : 3,
+        "title" : "Silicon Magsafe Charger Macbook",
+        "price" : 67000,
+        "rating": 4.9,
+        "location" : "Jakarta Barat",
+        "sold" : 357
+    },
+    {
+        "id" : 4,
+        "title" : "Garskin Skin Realme",
+        "price" : 16000,
+        "rating": 4.7,
+        "location" : "Tangerang Selatan",
+        "sold" : 131
+    },
+    {
+        "id" : 5,
+        "title" : "Keychron M1 Ultra-Light Optical Mouse",
+        "price" : 629100,
+        "rating": 5.0,
+        "location" : "Jakarta Barat",
+        "sold" : 15
+    }
+]
