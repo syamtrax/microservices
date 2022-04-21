@@ -7,7 +7,7 @@ app = Flask(__name__)
 with open('./data.json', 'r') as productList:
    data = json.load(productList)
 
-@app.route("/lists")
+@app.route("/products")
 def lists():
     return jsonify(data)
 

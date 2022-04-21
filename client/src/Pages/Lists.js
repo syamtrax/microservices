@@ -3,18 +3,22 @@ import React, {useState, useEffect} from 'react'
 function Lists(){
     const [data, setData] = useState([{}])
 
-    useEffect(()=>{
-        fetch("/lists").then(
+    useEffect(() => {
+        console.log()
+        fetch("/products").then(
             res => res.json()
         ).then(
             data => {
                 setData(data)
             }
         )
-    },[])
-
+        console.log(data)
+    })
     return(
         <div>
+            <div>
+                test
+            </div>
             {(typeof data === 'undefined')? (
                 <p>Loading ... </p>
             ): (
