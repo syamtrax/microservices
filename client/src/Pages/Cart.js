@@ -1,4 +1,6 @@
 
+import $ from 'jquery'
+
 // eslint-disable-next-line no-empty-pattern
 const Cart = ({ }) => {
     const cart = [
@@ -13,10 +15,6 @@ const Cart = ({ }) => {
         { "id": 998, "product_name": "Steam Pan - Half Size Deep", "price": "$44.37", "rating": 4.9, "location": "Arras", "sold": 15 },
         { "id": 999, "product_name": "Lamb - Pieces, Diced", "price": "$60.72", "rating": 3.8, "location": "Trollhättan", "sold": 60 },
     ]
-
-    const handleClick = () => {
-        
-    }
 
 
     return <>
@@ -48,9 +46,11 @@ const Cart = ({ }) => {
                     }
                 </tbody>
             </table>
-
-            <button onClick={handleClick}>checkout</button>
         </div>
+        <form action="/checkout" method="POST">
+            <input type="hidden" name="cart" value={cart.map(item => item.id)} />
+            <input type="submit" value="checkout" />
+            </form>
     </>
 }
 
