@@ -20,5 +20,15 @@ def checkout():
         return jsonify({'message': 'error'})
     return redirect('htttp://localhost:3000/list')
 
+
+@app.route("/search" , methods=['GET'])
+def search():
+    # ambil parameter dari request
+    search_term = request.args.get('name')
+    # ambil data dari service 6 (dataserver)
+    data = r.get(f'http://localhost:5003/search?name={search_term}').json()
+
+    return jsonify(data)
+
 if __name__ == '__main__':
     app.run(debug=True)

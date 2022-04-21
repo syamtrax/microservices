@@ -1,6 +1,4 @@
 
-import $ from 'jquery'
-
 // eslint-disable-next-line no-empty-pattern
 const Cart = ({ }) => {
     const cart = [
