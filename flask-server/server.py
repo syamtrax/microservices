@@ -16,7 +16,8 @@ def checkout():
     print(cart)
     try:
         r.post('http://localhost:5004', data={'cart': cart})
-    except:
+    except Exception as e:
+        print(e)
         return jsonify({'message': 'error'})
     return redirect('htttp://localhost:3000/list')
 

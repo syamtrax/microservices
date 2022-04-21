@@ -17,7 +17,8 @@ function Lists(){
     
     return(
         <div>
-            <div className='flex table-containter max-w-full justify-center'>
+            <h1 className='text-2xl font-bold text-center mb-10'>Product Lists</h1>
+            <div className='flex table-containter max-w-full justify-center overflow-auto h-[761px]'>
                 {data.length > 0 && <table id="products-tb" className='animate-fade-in display table-auto border-separate w-full'>
                     <thead>
                         <tr>

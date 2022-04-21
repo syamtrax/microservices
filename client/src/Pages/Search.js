@@ -29,28 +29,27 @@ const Search = () => {
                 bg-gray-500 text-white' type="submit" value="search" />
             </form>
 
-            {searchResult.length > 0 && <div className='table-containter'>
-                <table id="products-tb" className='display'>
+            {searchResult.length > 0 && <div className='table-containter overflow-auto h-[700px]'>
+            <table id="products-tb" className='animate-fade-in display table-auto border-separate w-full'>
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>Nama Product</th>
                             <th>Price</th>
                             <th>Rating</th>
-                            <th>City</th>
                             <th>Sold</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         {
                             searchResult.map(({ id, product_name, price, rating, location, sold }, index) => (
-                                <tr key={id}>
-                                    <td>{index + 1}</td>
-                                    <td > {product_name} </td>
-                                    <td >{price}</td>
-                                    <td >{rating}</td>
-                                    <td >{location}</td>
-                                    <td >{sold}</td>
+                                <tr key={id} className={`${index % 2 ? 'bg-gray-100' : 'bg-white'}
+                                gap-4`}>
+                                    <td className='text-center'>{index + 1}</td>
+                                    <td className='py-3 px-2 ' > {product_name} </td>
+                                    <td className='py-3 px-2 text-center' >{price}</td>
+                                    <td className='py-3 px-2 text-center' >{rating}</td>
+                                    <td className='py-3 px-2 text-center' >{sold}</td>
                                 </tr>
                             ))
                         }
