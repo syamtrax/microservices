@@ -14,40 +14,45 @@ const Cart = ({ }) => {
         { "id": 999, "product_name": "Lamb - Pieces, Diced", "price": "$60.72", "rating": 3.8, "location": "Trollhättan", "sold": 60 },
     ]
 
+    const total_price =  cart.reduce((acc, curr) => acc + parseFloat(curr.price.slice(1)), 0)
+
 
     return <>
         <div>
-            <h1>Your Cart</h1>
-            <table id="products-tb" className='display'>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Product</th>
-                        <th>Price</th>
-                        <th>Rating</th>
-                        <th>City</th>
-                        <th>Sold</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        cart.map(({ id, product_name, price, rating, location, sold }, index) => (
-                            <tr key={id}>
-                                <td>{index + 1}</td>
-                                <td > {product_name} </td>
-                                <td >{price}</td>
-                                <td >{rating}</td>
-                                <td >{location}</td>
-                                <td >{sold}</td>
-                            </tr>
-                        ))
+        <table id="products-tb" className='animate-fade-in display table-auto border-separate w-full'>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Product</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {
+                            cart.map(({ id, product_name, price, rating, location, sold }, index) => (
+                                <tr key={id} className={`${index % 2 ? 'bg-gray-100' : 'bg-white'}
+                                gap-4`}>
+                                    <td className='text-center'>{index + 1}</td>
+                                    <td className='py-3 px-2 ' > {product_name} </td>
+                                    <td className='py-3 px-2 text-center' >{price}</td>
+                                </tr>
+                            ))
                     }
-                </tbody>
-            </table>
+                    <tr >
+                        <td colSpan={2} className="py-3 px-2 text-center font-bold">Total</td>
+                        <td className="py-3 px-2 text-center font-bold">${total_price }</td>
+                    </tr>
+                    <tr >
+                        <td colSpan={2} className="py-3 px-2 text-center font-bold"></td>
+                        <td className="py-3 px-2 text-center font-bold"><input type="submit" value="checkout" className="ml-auto text-center bg-green-500 py-2 px-4 text-white font-bold rounded-lg hover:cursor-pointer" form="checkout"></input></td>
+                    </tr>
+                    
+                    </tbody>
+                </table>
         </div>
-        <form action="/checkout" method="POST">
+        <form action="/checkout" method="POST" className="flex" id="checkout" >
             <input type="hidden" name="cart" value={cart.map(item => item.id)} />
-            <input type="submit" value="checkout" />
+            
             </form>
     </>
 }

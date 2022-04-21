@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 const Search = () => {
     const [search, setSearch] = useState('');
+    const [notFirstTime, setNotFirstTime] = useState(false);
 
     const [searchResult, setSearchResult] = useState([]);
 
@@ -14,15 +15,18 @@ const Search = () => {
         fetch(`/search?name=${search}`).then(
             res => res.json()
         ).then(data => setSearchResult(data))
+
+        setNotFirstTime(true)
     }
 
 
     return (
-        <div>
-            <h1>Search</h1>
-            <form onSubmit={handleSubmit}>
-                <input value={search} onChange={handleChange}></input>
-                <input type="submit" value="search" />
+        <div className='flex justify-center flex-col'>
+            <h1 className='text-2xl font-bold text-center'>Search Product</h1>
+            <form onSubmit={handleSubmit} className="flex flex-row justify-center m-10">
+                <input placeholder="search product" className='border-2 px-2 rounded-l-lg border-gray-500' value={search} onChange={handleChange}></input>
+                <input className='border-2 rounded-r-lg border-gray-500 hover:cursor-pointer
+                bg-gray-500 text-white' type="submit" value="search" />
             </form>
 
             {searchResult.length > 0 && <div className='table-containter'>
@@ -53,7 +57,7 @@ const Search = () => {
                     </tbody>
                 </table>
             </div>}
-            {searchResult.length === 0 && <div>no products found</div>}
+            {searchResult.length === 0 && notFirstTime && <div className='text-center'>no products found</div>}
         </div>
     );
 }

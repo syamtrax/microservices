@@ -22,7 +22,6 @@ export default function Navbar() {
     ]
 
     const link2 = ["Notifikasi", "Bantuan", "Bahasa"]
-    const link3 = [ "Daftar", "Masuk"]
 
     return (
         <div className="bg-white px-10 py-4">
