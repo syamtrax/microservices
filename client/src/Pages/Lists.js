@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
+
 
 function Lists(){
     const [data, setData] = useState([{}])
@@ -9,22 +10,48 @@ function Lists(){
             res => res.json()
         ).then(
             data => {
-                setData(data)
+                setData(data.slice(0,100))
             }
         )
-        console.log(data)
-    })
+    }, [])
+    
     return(
         <div>
-            <div>
-                test
+            <div className='table-containter'>
+                <table id="products-tb" className='display'>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Product</th>
+                        <th>Price</th>
+                        <th>Rating</th>
+                        <th>City</th>
+                        <th>Sold</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            data.map(({id, product_name, price, rating, location, sold}) =>(
+                                <tr>
+                                    <td  key={id}> {product_name} </td>
+                                    <td key={id}>{price}</td>
+                                    <td key={id}>{rating}</td>
+                                    <td key={id}>{location}</td>
+                                    <td key={id}>{sold}</td>
+                                </tr>
+                            ))
+                            }
+                    </tbody>
+                </table>
+
             </div>
+
             {(typeof data === 'undefined')? (
                 <p>Loading ... </p>
             ): (
-            data.map(({id, title, price, rating, location, sold}) =>(
+            data.map(({id, product_name, price, rating, location, sold}) =>(
                 <>
-                    <h2 key={id}> {title} </h2>
+                    <h2 key={id}> {product_name} </h2>
                     <p key={id}>{price}</p>
                     <p key={id}>{rating}</p>
                     <p key={id}>{location}</p>

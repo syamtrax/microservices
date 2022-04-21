@@ -9,6 +9,7 @@ with open('./data.json', 'r') as productList:
 
 @app.route("/products")
 def lists():
+    
     return jsonify(data)
 
 if __name__ == '__main__':
