@@ -5,7 +5,10 @@ function Homepage() {
       <div>
            <Link to="/Lists">
                <button>Lihat List Barang</button>
-           </Link>
+        </Link>
+        <Link to="/cart">
+            <button>Cart</button>
+        </Link>
       </div>
     );
   }

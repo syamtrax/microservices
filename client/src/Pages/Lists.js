@@ -31,13 +31,14 @@ function Lists(){
                     </thead>
                     <tbody>
                         {
-                            data.map(({id, product_name, price, rating, location, sold}) =>(
-                                <tr>
-                                    <td  key={id}> {product_name} </td>
-                                    <td key={id}>{price}</td>
-                                    <td key={id}>{rating}</td>
-                                    <td key={id}>{location}</td>
-                                    <td key={id}>{sold}</td>
+                            data.map(({id, product_name, price, rating, location, sold}, index) =>(
+                                <tr key={id}>
+                                    <td>{ index+1}</td>
+                                    <td > {product_name} </td>
+                                    <td >{price}</td>
+                                    <td >{rating}</td>
+                                    <td >{location}</td>
+                                    <td >{sold}</td>
                                 </tr>
                             ))
                             }
@@ -45,20 +46,6 @@ function Lists(){
                 </table>
 
             </div>
-
-            {(typeof data === 'undefined')? (
-                <p>Loading ... </p>
-            ): (
-            data.map(({id, product_name, price, rating, location, sold}) =>(
-                <>
-                    <h2 key={id}> {product_name} </h2>
-                    <p key={id}>{price}</p>
-                    <p key={id}>{rating}</p>
-                    <p key={id}>{location}</p>
-                    <p key={id}>{sold}</p>
-                </>
-            ))
-            )}
       </div>
   )
 }
