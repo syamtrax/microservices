@@ -19,7 +19,7 @@ def checkout():
     except Exception as e:
         print(e)
         return jsonify({'message': 'error'})
-    return redirect('htttp://localhost:3000/list')
+    return redirect('http://localhost:3000/checkoutsuccess')
 
 
 @app.route("/search" , methods=['GET'])
@@ -28,6 +28,12 @@ def search():
     search_term = request.args.get('name')
     # ambil data dari service 6 (dataserver)
     data = r.get(f'http://localhost:5003/search?name={search_term}').json()
+
+    return jsonify(data)
+
+@app.route("/rec" , methods=['GET'])
+def rec():
+    data = r.get('http://localhost:5002/recommendation').json()
 
     return jsonify(data)
 

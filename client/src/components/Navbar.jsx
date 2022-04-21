@@ -14,6 +14,9 @@ export default function Navbar() {
         {
             name: "Cart",
             link: "/cart"
+        }, {
+            name: "Recommendation",
+            link: "/recommendation"
         },
         {
             name: "Search",
